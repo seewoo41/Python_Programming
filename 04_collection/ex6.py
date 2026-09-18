@@ -78,10 +78,14 @@ result={k:v for k, v in scores.items() if(v>=90)}
 words = ["apple", "banana", "apple", "cherry", "banana", "apple"]
 result={x:words.count(x) for x in words}
 print(result)
+
 count={}
 for word in words:
     count[word]=count.get(word, 0)+1
+print(result)
 
+from collections import Counter
+print(dict(Counter(words)))
                                     # ✅ {'apple': 3, 'banana': 2, 'cherry': 1}
 
 
@@ -110,4 +114,7 @@ print(stock)
 
 for item, qty in incoming.items():
     stock[item]=stock.get(item, 0)+qty
+
+stock.update({item:stock[item]+qty if item in stock else qty for item, qty in incoming.items()})
+stock.update({item:stock.get(item, 0)+qty for item, qty in incoming.items()})
                                     # ✅ {'연필': 10, '지우개': 9, '노트': 10, '볼펜': 12}
