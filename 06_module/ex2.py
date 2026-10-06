@@ -31,6 +31,9 @@ from requests import api
 response=api.get(url)
 print(response.status_code)
 
+from numpy import _core
+print(_core.arange(5))
+
 # re-export를 한 경우에는 세부 모듈 경로를 몰라도 됨
 import requests
 requests.get(url)
